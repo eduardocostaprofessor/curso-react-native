@@ -7,55 +7,8 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem } from '@react-navigation/drawer'
+
 import { NavigationContainer } from '@react-navigation/native'
-
-
-// telas
-// function Feed() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Feed Screen</Text>
-//     </View>
-//   );
-// }
-
-// function Article() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Article Screen</Text>
-//     </View>
-//   );
-// }
-
-
-
-// const Drawer = createDrawerNavigator();
-
-// function MyDrawer() {
-//   return (
-//     <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)}>
-//       <Drawer.Screen name="Profile" component={ProfileScreen} />
-//           <Drawer.Screen 
-//             name="Login" 
-//             component={Login}
-//             options={{ gestureEnabled: false }}
-//           />
-//           <Drawer.Screen name="Calculadora" component={CalcScreen} />
-//           <Drawer.Screen name="Signout" component={SignoutScreen} />
-//     </Drawer.Navigator>
-//   );
-// }
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <MyDrawer />
-//     </NavigationContainer>
-//   );
-// }
-
-
-
 
 // Componentes
 import {
@@ -65,7 +18,6 @@ import {
 } from "./src/screens";
 
 import Login from "./src/screens/Login";
-
 
 // Criação do app
 const Drawer = createDrawerNavigator();
