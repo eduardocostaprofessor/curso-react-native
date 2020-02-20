@@ -58,7 +58,7 @@ export default class Login extends Component {
             }
         } else {
             Alert.alert('Erro', 'Login Inválido')
-        }
+        } 
     }
 
     render() {
