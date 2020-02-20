@@ -11,7 +11,6 @@ export default (props) => {
 
     return (
         <ScrollView>
-            {/* <DrawerContentScrollView {...props}> */}
             <ImageBackground style={estilos.backgroundProfile} source={require('../../../assets/perfil-bkg.jpg')}>
                 <View style={estilos.layer}>
 
@@ -24,7 +23,6 @@ export default (props) => {
             <View style={estilos.drawerItens}>
                 <DrawerItemList {...props} />
             </View>
-            {/* </DrawerContentScrollView> */}
         </ScrollView>
     );
 }

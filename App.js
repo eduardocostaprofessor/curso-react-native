@@ -2,16 +2,14 @@ import React, { Component } from 'react'
 
 // Navigators
 import { createDrawerNavigator} from '@react-navigation/drawer'
-
 import { NavigationContainer } from '@react-navigation/native'
 
 // Componentes
 import {
   ProfileScreen,
   CalcScreen,
-  SignoutScreen,
 } from "./src/screens";
-
+console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed']
 import LoginScreen from "./src/screens/Login";
 import LogoutScreen from "./src/screens/Logout";
 import Sidebar from "./src/components/Sidebar/";
