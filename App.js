@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { Component } from 'react'
+import { ScrollView } from 'react-native';
 
 // Navigators
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -9,42 +9,40 @@ import { NavigationContainer } from '@react-navigation/native'
 import {
   ProfileScreen,
   CalcScreen,
-  SigninScreen
+  SignoutScreen,
 } from "./src/screens";
 
-//funcionalidade em desenvolvimento
-function Perfil() {
-  return (
-    <View style={
-      { 
-        justifyContent: 'center', alignItems: 'center',
-        height: 80,
-        width: '100%',
-        backgroundColor: 'green'
-      }
-    }>
-      <Text style={{color: "white"}}>Perfil</Text>
-    </View>
-  );
-}
+import Login from "./src/screens/Login";
+
 
 // Criação do app
 const Drawer = createDrawerNavigator();
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Profile"
-        // drawerContent={Perfil}
-        drawerContentOptions={{
-          activeTintColor: '#23c1bd',
-          itemStyle: { marginVertical: 30,},
-        }}
-      >
-        <Drawer.Screen name="Profile" component={ProfileScreen} />
-        <Drawer.Screen name="Calculadora" component={CalcScreen} />
-        <Drawer.Screen name="Signin" component={SigninScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  )
+export default class App extends Component {
+  
+  render() {
+    return (
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Login"
+          // drawerContent={Perfil}
+          drawerContentOptions={{
+            activeTintColor: '#23c1bd',
+            itemStyle: { marginVertical: 30, },
+          }}
+          hideStatusBar={true}
+          drawerType="slide"
+          // hideStatusBar={true}
+        >
+          <Drawer.Screen name="Profile" component={ProfileScreen} />
+          <Drawer.Screen 
+            name="Login" 
+            component={Login}
+            options={{ gestureEnabled: false }}
+          />
+          <Drawer.Screen name="Calculadora" component={CalcScreen} />
+          <Drawer.Screen name="Signout" component={SignoutScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    )
+  }
 }

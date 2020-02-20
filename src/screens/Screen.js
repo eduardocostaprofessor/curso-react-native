@@ -29,8 +29,8 @@ export default class Screen extends Component {
             case 'Calculadora':
                 return <Calculadora />
                 break
-            case 'Signin':
-                return <Signin />
+            case 'Signout':
+                this.props.navigation.navigate('Login')
                 break
             default:
                 return <Profile />
@@ -42,7 +42,7 @@ export default class Screen extends Component {
 
         return (
             <View style={styles.container}>
-                <SafeAreaView style={{ flex: 1 }}>
+                <View style={{ flex: 1 }}>
                     {/* ******************** CABEÇALHO ******************** */}
                     <TouchableOpacity
                         style={styles.iconBar}
@@ -61,7 +61,7 @@ export default class Screen extends Component {
                     <View style={styles.body}>
                         {this.getBodyComponent(this.props.name)}
                     </View>
-                </SafeAreaView>
+                </View>
             </View>
         )
     }

@@ -8,3 +8,4 @@ import Screen from './Screen'
 export const ProfileScreen = ( { navigation }) => <Screen navigation={navigation} name="Profile" />
 export const CalcScreen = ({ navigation }) => <Screen navigation={navigation} name="Calculadora" />
 export const SigninScreen = ({ navigation }) => <Screen navigation={navigation} name="Signin" />
+export const SignoutScreen = ({ navigation }) => <Screen navigation={navigation} name="Signout" />
