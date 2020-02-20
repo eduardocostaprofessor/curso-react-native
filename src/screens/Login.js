@@ -1,125 +1,149 @@
-import React, { Component } from 'react';
-import { 
-    Text, 
-    View, 
-    TextInput, 
-    Image, 
-    TouchableOpacity, 
-    ImageBackground, 
-    Alert, 
-    AsyncStorage 
-} from 'react-native';
-
+import React, { Component } from 'react'
+import {
+    Text,
+    View,
+    TextInput,
+    Image,
+    TouchableOpacity,
+    ImageBackground,
+    Alert,
+    AsyncStorage,
+    KeyboardAvoidingView
+} from 'react-native'
 
 export default class Login extends Component {
 
     constructor() {
         super()
         this.state = {
-            login: 'Edd',
-            senha: '123',
+            login: '',
+            senha: '',
             LOGIN: 'Edd',
             SENHA: '123',
         }
     }
-componentDidMount() {
-    
-    this.verificaLogin()
-}
+    componentDidMount() {
 
-verificaLogin = async () => {
-    try {
-        const login = await AsyncStorage.getItem('login')
-        Alert.alert('verificar', login)
-        if (login) 
-            this.props.navigation.navigate('Calculadora')
+        this.verificaLogin()
     }
-    catch (error) {
-        // Error retrieving data
-    }
-}
 
-
-login = async () => {
-    const USUARIO = this.state.LOGIN
-    const SENHA = this.state.SENHA
-
-    const userUsuario = this.state.login
-    const userSenha = this.state.senha
-
-    if (SENHA === userSenha && USUARIO === userUsuario) {
-
+    verificaLogin = async () => {
         try {
-            await AsyncStorage.setItem('logado', JSON.stringify(true))
-            this.props.navigation.navigate('Calculadora')
-
-        } catch (error) {
-            Alert.alert('Erro', 'Erro ao efetuar o login')
+            const login = await AsyncStorage.getItem('login')
+            // Alert.alert('verificar', login)
+            if (login)
+                this.props.navigation.navigate('Calculadora')
         }
-    } else {
-        Alert.alert('Erro', 'Login Inválido')
+        catch (error) {
+            // Error retrieving data
+        }
     }
-}
 
-render() {
 
-    // const {navigate} = this.props.navigation;
-    return (
-        <ImageBackground source={
-            require('../../assets/login-bck.png')}
-            style={estilos.imageContainer}
-        >
-            <View style={estilos.container}>
+    login = async () => {
+        const USUARIO = this.state.LOGIN
+        const SENHA = this.state.SENHA
 
-                <View style={estilos.formBox}>
-                    <Image style={estilos.logotipo} source={require('../../assets/rn-android-ios.png')} />
+        const userUsuario = this.state.login
+        const userSenha = this.state.senha
 
-                    <View style={estilos.formulario}>
-                        <TextInput value={this.state.login} placeholderTextColor="white" style={estilos.inputField} placeholder="Username"
-                            onChangeText={(valor) => {
-                                this.setState({ login: valor })
-                            }}
-                        ></TextInput>
-                        <TextInput value={this.state.senha} placeholderTextColor="white" style={estilos.inputField} placeholder="Password" secureTextEntry
-                            onChangeText={(valor) => {
-                                this.setState({ senha: valor })
-                            }}
-                        ></TextInput>
-                        <TouchableOpacity style={estilos.loginButton}>
-                            <Text style={estilos.textLoginButton} onPress={() => {
-                                this.login()
-                            }}>Sign In</Text>
-                            
-                        </TouchableOpacity>
+        if (SENHA === userSenha && USUARIO === userUsuario) {
 
-                        <View style={estilos.conainerForgot}>
-                            <TouchableOpacity style={estilos.textForgot}>
-                                <Text style={estilos.textForgot}>Forgot Password? |</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={estilos.textForgot}>
-                                <Text style={estilos.textForgot}> Register</Text>
-                            </TouchableOpacity>
+            try {
+                await AsyncStorage.setItem('logado', JSON.stringify(true))
+                this.props.navigation.navigate('Calculadora')
 
-                        </View>
-                    </View>
+            } catch (error) {
+                Alert.alert('Erro', 'Erro ao efetuar o login')
+            }
+        } else {
+            Alert.alert('Erro', 'Login Inválido')
+        }
+    }
 
-                    <View style={estilos.fazendooo}>
-                        <Text style={estilos.textForgot}>
-                            Conect whith
+    render() {
+
+        // const {navigate} = this.props.navigation;
+        return (
+
+            <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+                <ImageBackground source={
+                    require('../../assets/login-bck.png')}
+                    style={estilos.imageContainer}
+                >
+                    <View style={estilos.container}>
+
+                        <View style={estilos.formBox}>
+                            <Image style={estilos.logotipo} source={require('../../assets/rn-android-ios.png')} />
+
+                            {/* FORMULÁRIO */}
+                            <View style={estilos.formulario}>
+                                <TextInput
+                                    style={estilos.inputField}
+                                    placeholderTextColor="#3695b1"
+                                    placeholder="Username"
+                                    value={this.state.login}
+
+                                    onChangeText={(valor) => {
+                                        this.setState({ login: valor })
+                                    }}
+                                />
+
+                                <TextInput
+                                    style={estilos.inputField}
+                                    placeholderTextColor="#3695b1"
+                                    placeholder="Password"
+                                    secureTextEntry
+                                    keyboardType="numeric"
+                                    value={this.state.senha}
+
+                                    onChangeText={(valor) => {
+                                        this.setState({ senha: valor })
+                                    }}
+                                />
+
+                                <TouchableOpacity style={estilos.loginButton}>
+                                    <Text
+                                        style={estilos.textLoginButton}
+                                        onPress={() => {
+                                            this.login()
+                                        }}>Sign In</Text>
+                                </TouchableOpacity>
+
+                                {/* FORGOT / REGISTER */}
+                                <View style={estilos.conainerForgot}>
+                                    <TouchableOpacity style={estilos.textForgot}>
+                                        <Text style={estilos.textForgot}>Forgot Password? |</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={estilos.textForgot}>
+                                        <Text style={estilos.textForgot}> Register</Text>
+                                    </TouchableOpacity>
+
+                                </View>
+                            </View>
+                            <View style={estilos.fazendooo}>
+                                <Text style={estilos.textForgot}>
+                                    Conect whith
                             <Text style={estilos.socialAccount}> Social Account</Text>
-                        </Text>
+                                </Text>
+                            </View>
+                        </View>
+
                     </View>
-                </View>
 
-            </View>
+                </ImageBackground>
+            </KeyboardAvoidingView>
 
-        </ImageBackground>
-    );
-}
+        );
+    }
 };
 
 
-
+// <KeyboardAwareScrollView
+//     resetScrollToCoords={{ x: 0, y: 0 }}
+//     contentContainerStyle={{ flex: 1,  }}
+//     // scrollEnabled={false}
+// >
 import { StyleSheet } from 'react-native';
 
 const estilos = StyleSheet.create({
@@ -132,38 +156,37 @@ const estilos = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#23c1bd',
-        padding: 20,
-        opacity: 0.90,
+        backgroundColor: '#3695b1',
+        // padding: 10,
+        paddingTop: 40,
+        paddingBottom: 20,
+        opacity: 0.87,
     },
     formBox: {
         width: '95%',
-        // height: '95%',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-        // borderWidth: 2, borderColor: 'red',
     },
     formulario: {
         width: '100%',
+        marginTop: 40,
     },
     logotipo: {
-        width: 200,
-        height: 100,
-        marginVertical: 45,
-        borderRadius: 10,
+        width: 120,
+        height: 120,
+        borderRadius: 90,
+        borderColor: '#65d5e8', borderWidth: 5
     },
     inputField: {
         height: 50,
         width: '100%',
-        marginBottom: 20,
+        marginBottom: 30,
         paddingVertical: 10,
         paddingHorizontal: 20,
         fontSize: 18,
-        // backgroundColor: '#65d5e8',
         backgroundColor: 'white',
-        color: '#23c1bd',
-        // opacity: 1,
+        color: '#3695b1',
         borderRadius: 25,
 
 
@@ -172,7 +195,7 @@ const estilos = StyleSheet.create({
         height: 50,
         width: '100%',
         marginTop: 30,
-        padding: 10,
+        justifyContent: 'center',
         backgroundColor: '#65d5e8',
         borderRadius: 25,
 
@@ -180,7 +203,7 @@ const estilos = StyleSheet.create({
     textLoginButton: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 20,
     },
     conainerForgot: {
         width: '100%',

@@ -33,7 +33,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         width: '33.3333%',
         height: '20%',
-        backgroundColor: '#23c1bd',
+        backgroundColor: '#3695b1',
         borderColor: 'white', borderWidth: .5,
     },
     buttomText: {
@@ -46,12 +46,12 @@ export default StyleSheet.create({
     },
     buttonsOperationContainer: {
         width: '25%',
-        backgroundColor: '#23c1bd',
+        backgroundColor: '#3695b1',
     },
     operationButtom: {
         width: '100%',
         backgroundColor: '#fff',
-        borderColor: '#23c1bd', borderWidth: .5,
+        borderColor: '#3695b1', borderWidth: .5,
         opacity: .95,
     },
     buttomsOperationText: {

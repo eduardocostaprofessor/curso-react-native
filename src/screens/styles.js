@@ -4,8 +4,8 @@ export default StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#23c1bd',
-        paddingTop: 14 //para o Android
+        backgroundColor: '#3695b1',
+        paddingTop: 40
     },
     iconBar: {
         alignItems: 'flex-end',
